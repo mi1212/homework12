@@ -110,6 +110,12 @@ final class SearchViewController: UIViewController {
         setupOptionsStack()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+    }
+
+    
     private func setupLayout() {
         view.addSubview(searchLabel)
         view.addSubview(searchTextField)
@@ -170,7 +176,7 @@ final class SearchViewController: UIViewController {
     
     private func setupProperts() {
         view.backgroundColor = .black
-        
+        title = "Поиск"
         searchTextField.delegate = self
     }
     
@@ -179,6 +185,7 @@ final class SearchViewController: UIViewController {
         for i in 0...recentlyViewedItemsArray.count-1 {
             let item = recentlyViewedItemsArray[i]
             let view = RecentlyViewedView(item: item)
+            view.delegate = self
             recentlyViewedStack.addArrangedSubview(view)
         }
     }
@@ -186,7 +193,6 @@ final class SearchViewController: UIViewController {
     private func setupOptionsStack() {
         
         for i in 0...optionsRequestArray.count-1 {
-            let item = optionsRequestArray[i]
             let label = UILabel()
             label.text = optionsRequestArray[i]
             label.textColor = .white
@@ -202,5 +208,14 @@ extension SearchViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         view.endEditing(true)
     }
+    
+}
+
+extension SearchViewController: RecentlyViewedViewDelegate {
+    func tapView(item: Item) {
+        let vc = ItemViewController(item: item)
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
     
 }

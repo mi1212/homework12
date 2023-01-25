@@ -7,8 +7,17 @@
 
 import UIKit
 
+protocol RecentlyViewedViewDelegate: AnyObject {
+    func tapView(item: Item)
+}
+
 final class RecentlyViewedView: UIView {
     
+    var item: Item?
+    
+    weak var delegate: RecentlyViewedViewDelegate?
+    
+    // MARK: - Views
     private let picImageView: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFit
@@ -19,6 +28,7 @@ final class RecentlyViewedView: UIView {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
+        label.textColor = .white
         label.font = UIFont.systemFont(ofSize: 13, weight: .thin)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -26,9 +36,11 @@ final class RecentlyViewedView: UIView {
     
     init(item: Item) {
         super.init(frame: .zero)
+        self.item = item
         setupLayout()
         setupProperts()
         setupData(item: item)
+        setupGesture()
     }
     
     required init?(coder: NSCoder) {
@@ -57,7 +69,7 @@ final class RecentlyViewedView: UIView {
     }
     
     private func setupProperts() {
-        backgroundColor = .white
+        backgroundColor = #colorLiteral(red: 0.1163231064, green: 0.107940051, blue: 0.1184733386, alpha: 1)
         layer.cornerRadius = 12
         clipsToBounds = true
     }
@@ -65,6 +77,17 @@ final class RecentlyViewedView: UIView {
     private func setupData(item: Item) {
         picImageView.image = UIImage(named: item.imageName)
         titleLabel.text = item.name
+    }
+    
+    private func setupGesture() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tapView))
+        addGestureRecognizer(tap)
+    }
+    
+    @objc private func tapView() {
+        if let item = self.item {
+            delegate?.tapView(item: item)
+        }
     }
     
 }
