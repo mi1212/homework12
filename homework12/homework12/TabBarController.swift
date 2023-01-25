@@ -11,12 +11,13 @@ final class TabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor =  .systemGray6
+        self.tabBar.unselectedItemTintColor = .lightGray
         self.tabBar.tintColor = .systemTeal
+        self.tabBar.backgroundColor = #colorLiteral(red: 0.1163231064, green: 0.107940051, blue: 0.1184733386, alpha: 1)
         let vcArray = [
         setupTabBar(viewController: ViewController(), title: "Купить", image: "laptopcomputer.and.iphone"),
         setupTabBar(viewController: ViewController(), title: "Для вас", image: "person.crop.circle"),
-        setupTabBar(viewController: ViewController(), title: "Поиск", image: "magnifyingglass"),
+        setupTabBar(viewController: SearchViewController(), title: "Поиск", image: "magnifyingglass"),
         setupTabBar(viewController: ViewController(), title: "Корзина", image: "bag"),
         ]
         self.viewControllers = vcArray
