@@ -15,32 +15,11 @@ class ItemViewController: UIViewController {
     
     // MARK: - views
     
-    private let titleLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 20, weight: .heavy)
-        label.textColor = .white
-        label.textAlignment = .center
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    private let titleLabel = Label(text: "", textAlignment: .center, size: 20, color: .white, weight: .heavy)
     
-    private let priceLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        label.textColor = .systemGray
-        label.textAlignment = .center
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    private let priceLabel = Label(text: "", textAlignment: .center, size: 16, color: .systemGray, weight: .regular)
     
-    private let smallTitleLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
-        label.textColor = .systemGray
-        label.textAlignment = .center
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    private let smallTitleLabel = Label(text: "", textAlignment: .center, size: 12, color: .systemGray, weight: .regular)
     
     private let picImageView: UIImageView = {
         let image = UIImageView()

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ColorOptionsView: UIView {
+final class ColorOptionsView: UIView {
 
     var isChoosed: Bool = false {
         didSet {
