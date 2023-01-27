@@ -10,9 +10,24 @@ import UIKit
 final class SearchViewController: UIViewController {
         
     private let recentlyViewedItemsArray = [
-        Item(name: "AirPods Pro (2nd generation)", price: 249, imageName: "MQD83"),
-        Item(name: "iPhone 14 Plus Silicone Case with MagSafe - Lilac", price: 49, imageName: "MPT83"),
-        Item(name: "41mm (PRODUCT)RED Sport Loop", price: 49, imageName: "MPL83")
+        Item(
+            name: "AirPods Pro (2nd generation)",
+            price: 249,
+            imageName: "MQD83",
+            url: "https://www.apple.com/shop/product/MQD83AM/A/airpods-pro?fnode=8188557d1926ae5818301cd8a2501a8a7d6e426d3051d9dfd6b1e33b0a75a23d7d7da21d7cb705a7f195d54472ed7b5e17ed50f4b86943ae7eb54b6df26002ebb977c2a6ce5a2fdd46a2071b7a894db25e4ff5c8361aef22aa8be6f1cd264314"
+            ),
+        Item(
+            name: "iPhone 14 Plus Silicone Case with MagSafe - Lilac",
+            price: 49,
+            imageName: "MPT83",
+            url: "https://www.apple.com/shop/product/MPT83ZM/A/Iphone-14-plus-silicone-case-with-magsafe-lilac?fnode=f35a99aed2c8cc18c2ccd678dd253082af6b5bc6e489c5804c1da95d8c22a127d808b133d5dd376ab4520d6fd3a8b7b50b1008d5f15772512169f82e8de644983cf13fa636bc8056d8eb4d4ce59553651c211a8f0df08f5aa88ffdcc454ba0c8"
+        ),
+        Item(
+            name: "41mm (PRODUCT)RED Sport Loop",
+            price: 49,
+            imageName: "MPL83",
+            url: "https://www.apple.com/shop/product/MPL83AM/A/41mm-productred-sport-loop?fnode=8188557d1926ae5818301cd8a2501a8a7d6e426d3051d9dfd6b1e33b0a75a23d7d7da21d7cb705a7f195d54472ed7b5e17ed50f4b86943ae7eb54b6df26002ebb977c2a6ce5a2fdd46a2071b7a894db25e4ff5c8361aef22aa8be6f1cd264314"
+        )
     ]
     
     private let optionsRequestArray = [
@@ -115,7 +130,6 @@ final class SearchViewController: UIViewController {
         
     }
 
-    
     private func setupLayout() {
         view.addSubview(searchLabel)
         view.addSubview(searchTextField)

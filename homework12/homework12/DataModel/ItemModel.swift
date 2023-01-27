@@ -11,4 +11,5 @@ struct Item {
     let name: String
     let price: Int
     let imageName: String
+    let url: String
 }

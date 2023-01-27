@@ -25,10 +25,11 @@ class ItemViewController: UIViewController {
         let image = UIImageView()
         image.contentMode = .scaleAspectFit
         image.clipsToBounds = true
+        image.isUserInteractionEnabled = true
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
-    
+  
     private let optionsStack: UIStackView = {
         let stack = UIStackView()
         stack.axis = .horizontal
@@ -55,11 +56,26 @@ class ItemViewController: UIViewController {
         setupNavigationBarButtons()
         setupData(item: self.item)
         setupOptionsStack()
+        setupGesture()
+        
     }
     
     private func setupProperts() {
         view.backgroundColor = .black
         navigationController?.navigationBar.tintColor = .systemTeal
+        
+    }
+    
+    private func setupGesture() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tapPic))
+        picImageView.addGestureRecognizer(tap)
+    }
+    
+    
+    @objc private func tapPic() {
+        let url = item.url
+        let vc = WebViewController(url: url)
+        present(vc, animated: true)
     }
     
     private func setupLayout() {
@@ -102,8 +118,6 @@ class ItemViewController: UIViewController {
             optionsStack.widthAnchor.constraint(equalToConstant: 108),
             optionsStack.heightAnchor.constraint(equalToConstant: 50)
         ])
-        
-        print(optionsStack.layer.frame)
     }
     
     private func setupNavigationBarButtons() {
